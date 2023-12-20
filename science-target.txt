@@ -1,14 +1,13 @@
 {    
-    "path":"/Users/tahutch1/data/raw/jwst/ers/templates/reduced/",
+    "path":"/path/to/data/",
 
-    "SGAS1723":{
+    "[targetname]":{
     
-        "name":"SGAS1723",
-        "z":1.3293,
+        "z":1.2345,
         "grating":{
         
             "g140h":{
-                "filename":"all-observations/Level3_SGAS1723_ALLOBS_BGSUB_g140h-f100lp_s3d.fits",
+                "filename":"[filename].fits",
                 "filter":"f100lp",
                 "slice-sky":300,
                 "slice-target":853

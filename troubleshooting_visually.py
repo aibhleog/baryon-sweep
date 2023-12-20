@@ -1,15 +1,25 @@
 '''
 
-These are plotting helper functions in case you want or need to explore the data, to investigate a certain slice or spaxel's spectrum.  Personally, I found some of these most useful in the following ways:
+These are plotting helper functions in case you want or need to explore the data, 
+to investigate a certain slice or spaxel's spectrum.  Personally, I found some of 
+these most useful in the following ways:
 
 1. checking different slices to see how the clipping process worked (before & after)
 2. looking at individual spaxels (before & after)
 
-For the second reason, this was most useful for me when looking at spaxels around the edge of the IFU field of view, where the S/N is lower due to being on/near the edge but the spaxel flux density values should be in higher S/N layers.  It's a niche case, but for the example galaxy shown in H+, submitted, this was necessary.
+For the second reason, this was most useful for me when looking at spaxels around 
+the edge of the IFU field of view, where the S/N is lower due to being on/near the 
+edge but the spaxel flux density values should be in higher S/N layers.  It's a 
+niche case, but for the example galaxy shown in H+, submitted, this was necessary.
 
 
 --------------------
-As a final note, I code through scripting, so these functions were often run in my ipython terminal after running the algorithm scripts.  Since we converted those scripts to Jupyter notebooks (to make them more user-friendly), these functions were adapted to be importable.  HOWEVER, if you'd like, you can copy-paste the code itself into the bottom of the Jupyter notebook of choice -- then you can cut down the number of input variables needed (because the notebook will have most of them already in the memory).
+As a final note, I code through scripting, so these functions were often run in my 
+ipython terminal after running the algorithm scripts.  Since we converted those 
+scripts to Jupyter notebooks (to make them more user-friendly), these functions were 
+adapted to be importable.  HOWEVER, if you'd like, you can copy-paste the code itself 
+into the bottom of the Jupyter notebook of choice -- then you can cut down the number 
+of input variables needed (because the notebook will have them already in the memory).
 
 To help with this, I've included a commented out version of what those inputs could be.
 -------------------------

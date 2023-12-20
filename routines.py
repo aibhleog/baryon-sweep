@@ -1,6 +1,7 @@
 '''
 
-Series of helper functions for use in the layered sigma-clipping algorithm defined in Hutchison et al., submitted to PASP.
+Series of helper functions for use in the layered sigma-clipping algorithm 
+defined in Hutchison et al., submitted to PASP.
 
 To read more, see https://arxiv.org/abs/############
 
