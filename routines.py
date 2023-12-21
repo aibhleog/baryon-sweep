@@ -3,7 +3,7 @@
 Series of helper functions for use in the layered sigma-clipping algorithm 
 defined in Hutchison et al., submitted to PASP.
 
-To read more, see https://arxiv.org/abs/############
+To read more, see arxiv.org/abs/2312.12518
 
 Created by Dr. Taylor Hutchison, NASA GSFC,
 on behalf of the TEMPLATES team.
@@ -38,12 +38,13 @@ def get_target_info(target,grat='g140h'):
     
     INPUTS:
     >> target  -----------  the name of the science target
-    >> grat  -------------  the grating of the specified observation
+    >> grat (opt)  -------  the grating of the specified observation,
+                            optional unless >1 grating for science target
                        
     OUTPUTS:
     >> science_target ----  dictionary of info on science target
     >> path  -------------  path to the data to be read in
-    >> grating (opt)  ----  specified grating, optional unless >1 grating
+    >> grating  ----------  specified grating
     '''
     # reading in file that has all of the galaxy values
     with open('science-target.txt') as f:
