@@ -18,6 +18,8 @@ import numpy as np
 
 from astropy import units as u
 from astropy.stats import sigma_clip
+from astropy.wcs import WCS
+from scipy import stats
 
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
@@ -25,7 +27,7 @@ from matplotlib.patches import Ellipse
 import pandas as pd
 import astropy.io.fits as fits
 import sys,json
-
+import os
 
 
 
@@ -63,7 +65,7 @@ def get_target_info(target,grat='g140h'):
         if len(gratings) > 1: grating = grat
         else: grating = gratings[0]
         
-        return science_target,path,gratings
+        return science_target,path,grating
     
     except KeyError: 
         print(f'The available targets are: {list(targets.keys())[1:]}') # skips the path variable
@@ -71,7 +73,7 @@ def get_target_info(target,grat='g140h'):
 
 
 
-def get_mask(target):
+def get_mask(target,array_2d=True):
     '''
     INPUTS:
     >> target  -------------  the name of the galaxy mask I want
@@ -88,18 +90,20 @@ def get_mask(target):
     mask_layers_info = np.loadtxt(f'{filename[:-5]}-info.txt',delimiter='\t')
     mask_layers = []
 
-    with fits.open(filename) as hdul:
-        for i in range(len(hdul)):
-            # map layer
-            target_mask = hdul[i].data
-
-            # makings a list of coordinates
-            coordinates = list(zip(*np.where(target_mask == 1)))
-
-            if array_2d == False: mask_layers.append(coordinates)
-            else: mask_layers.append(target_mask)
-
-    return mask_layers, mask_layers_info
+    # double-checking names are right for dictionary
+    try:
+        with fits.open(filename) as hdul:
+            for i in range(len(hdul)):
+                # map layer
+                target_mask = hdul[i].data
+    
+                # makings a list of coordinates
+                coordinates = list(zip(*np.where(target_mask == 1)))
+    
+                if array_2d == False: mask_layers.append(coordinates)
+                else: mask_layers.append(target_mask)
+    
+        return mask_layers, mask_layers_info
 
     except:
         print("\nWrong layers file and/or file doesn't exist yet.",end='\n\n')
@@ -231,6 +235,12 @@ def get_yaxis_scaling(flam):
     >> scale  -------  the 10^N scale to divide the yaxis by in plotting
     '''
     median = np.nanmedian(flam) # initial scaling value, ___x10^N
-    exoponent = int(np.log10(median)) # getting just the exponent part, N
-    scale = np.power(10,exponent) # 1x10^N
+    exponent = int(np.log10(median)) # getting just the exponent part, N
+    scale = np.power(10.,exponent) # 1x10^N
     return scale
+
+
+
+
+
+

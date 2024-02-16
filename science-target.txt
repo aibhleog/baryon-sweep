@@ -10,8 +10,7 @@
                 "filename":"[filename].fits",
                 "filter":"f100lp",
                 "slice-sky":300,
-                "slice-target":853
-                }
+                "slice-target":837
                 
             }
         }

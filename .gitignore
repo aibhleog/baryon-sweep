@@ -1,3 +1,7 @@
+# TAH-added things to ignore testing files that no one else needs to see haha
+my-science-target-TAH.txt
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
